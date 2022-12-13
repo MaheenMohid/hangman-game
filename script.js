@@ -10,7 +10,101 @@ const finalMessageRevealWord = document.getElementById(
 
 const figureParts = document.querySelectorAll(".figure-part")
 
-const words = ["application", "programming", "interface", "wizard"]
+const words = [
+  " Afghanistan",
+  " Algeria",
+  " Argentina",
+  " Armenia",
+  " Australia",
+  " Austria",
+  "Azerbaijan",
+
+  "Brunei",
+  " Cambodia",
+
+  "  Canada",
+  " Chile",
+  " China",
+  " Colombi",
+  " Denmark",
+  "   Egypt",
+  " Ethiopia",
+  " Fiji",
+  "  Finland",
+  " France",
+  "Georgia",
+  " Germany",
+  " Ghana",
+  " Greece",
+  " Hungary",
+
+  " Iceland",
+  " India",
+  " Indonesia",
+  " Iran",
+  " Iraq",
+  " Ireland",
+  "Italy",
+
+  " Jamaica",
+  " Japan",
+  " Jordan",
+
+  " Kazakhstan",
+  " Kenya",
+  "  Kiribati",
+
+  " Kosovo",
+  " Kuwait",
+  " Kyrgyzstan",
+  " lebanon",
+  " libya",
+
+  " Malaysia",
+  " Morocco",
+  " Maldives",
+  " Mexico",
+  " Nepal",
+  " Netherlands",
+  " New Zealand",
+  " Nigeria",
+  " Norway",
+  " Oman",
+
+  " Pakistan",
+  " Palau",
+  " Peru",
+  " Philippines",
+  " Poland",
+  " Portugal",
+  "Palestine",
+
+  "  Qatar",
+  "  Singapore",
+
+  " Somalia",
+  " South Africa",
+  " Spain",
+  " Sri Lanka",
+  " Sudan",
+  " Sweden",
+  " Switzerland",
+  " Syria",
+  " Taiwan",
+  " Tajikistan",
+  " Tanzania",
+  " Thailand",
+  " Tunisia",
+  " Turkey",
+  " Turkmenistan",
+
+  " United Arab Emirates",
+  " United Kingdom",
+  " United States",
+  " Uzbekistan",
+  "  Yemen",
+  " Zimbabwe",
+]
 
 let selectedWord = words[Math.floor(Math.random() * words.length)]
 
