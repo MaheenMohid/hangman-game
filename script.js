@@ -121,7 +121,7 @@ function displayWord() {
       .map(
         (letter) => `
           <span class="letter">
-            ${correctLetters.includes(letter) ? letter : ""}
+            ${checkIfItHasLetter(correctLetters, letter) ? letter : ""}
           </span>
         `
       )
@@ -177,14 +177,22 @@ function showNotification() {
   }, 2000)
 }
 
+// Makes it easier to read the if statements
+function checkIfItHasLetter(origin, letter) {
+  const letterLowerCase = letter.toLowerCase()
+  const letterUpperCase = letter.toUpperCase()
+
+  return origin.includes(letterLowerCase) || origin.includes(letterUpperCase)
+}
+
 // Keydown letter press
 window.addEventListener("keydown", (e) => {
   if (playable) {
     if (e.keyCode >= 65 && e.keyCode <= 90) {
-      const letter = e.key.toLowerCase()
+      const letter = e.key
 
-      if (selectedWord.includes(letter)) {
-        if (!correctLetters.includes(letter)) {
+      if (checkIfItHasLetter(selectedWord, letter)) {
+        if (!checkIfItHasLetter(correctLetters, letter)) {
           correctLetters.push(letter)
 
           displayWord()
@@ -192,7 +200,7 @@ window.addEventListener("keydown", (e) => {
           showNotification()
         }
       } else {
-        if (!wrongLetters.includes(letter)) {
+        if (!checkIfItHasLetter(wrongLetters, letter)) {
           wrongLetters.push(letter)
 
           updateWrongLettersEl()
