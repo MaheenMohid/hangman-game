@@ -20,12 +20,13 @@ const words = [
   "Azerbaijan",
 
   "Brunei",
+  "Brazil",
   "Cambodia",
 
   "Canada",
   "Chile",
   "China",
-  "Colombi",
+  "Colombia",
   "Denmark",
   "Egypt",
   "Ethiopia",
