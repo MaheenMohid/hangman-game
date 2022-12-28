@@ -11,102 +11,103 @@ const finalMessageRevealWord = document.getElementById(
 const figureParts = document.querySelectorAll(".figure-part")
 
 const words = [
-  " Afghanistan",
-  " Algeria",
-  " Argentina",
-  " Armenia",
-  " Australia",
-  " Austria",
+  "Afghanistan",
+  "Algeria",
+  "Argentina",
+  "Armenia",
+  "Australia",
+  "Austria",
   "Azerbaijan",
 
   "Brunei",
-  " Cambodia",
+  "Brazil",
+  "Cambodia",
 
-  "  Canada",
-  " Chile",
-  " China",
-  " Colombi",
-  " Denmark",
-  "   Egypt",
-  " Ethiopia",
-  " Fiji",
-  "  Finland",
-  " France",
+  "Canada",
+  "Chile",
+  "China",
+  "Colombia",
+  "Denmark",
+  "Egypt",
+  "Ethiopia",
+  "Fiji",
+  "Finland",
+  "France",
   "Georgia",
-  " Germany",
-  " Ghana",
-  " Greece",
-  " Hungary",
+  "Germany",
+  "Ghana",
+  "Greece",
+  "Hungary",
 
-  " Iceland",
-  " India",
-  " Indonesia",
-  " Iran",
-  " Iraq",
-  " Ireland",
+  "Iceland",
+  "India",
+  "Indonesia",
+  "Iran",
+  "Iraq",
+  "Ireland",
   "Italy",
 
-  " Jamaica",
-  " Japan",
-  " Jordan",
+  "Jamaica",
+  "Japan",
+  "Jordan",
 
-  " Kazakhstan",
-  " Kenya",
-  "  Kiribati",
+  "Kazakhstan",
+  "Kenya",
+  "Kiribati",
 
-  " Kosovo",
-  " Kuwait",
-  " Kyrgyzstan",
-  " lebanon",
-  " libya",
+  "Kosovo",
+  "Kuwait",
+  "Kyrgyzstan",
+  "Lebanon",
+  "Libya",
 
-  " Malaysia",
-  " Morocco",
-  " Maldives",
-  " Mexico",
-  " Nepal",
-  " Netherlands",
-  " New Zealand",
-  " Nigeria",
-  " Norway",
-  " Oman",
+  "Malaysia",
+  "Morocco",
+  "Maldives",
+  "Mexico",
+  "Nepal",
+  "Netherlands",
+  "New Zealand",
+  "Nigeria",
+  "Norway",
+  "Oman",
 
-  " Pakistan",
-  " Palau",
-  " Peru",
-  " Philippines",
-  " Poland",
-  " Portugal",
+  "Pakistan",
+  "Palau",
+  "Peru",
+  "Philippines",
+  "Poland",
+  "Portugal",
   "Palestine",
 
-  "  Qatar",
-  "  Singapore",
+  "Qatar",
+  "Singapore",
 
-  " Somalia",
-  " South Africa",
-  " Spain",
-  " Sri Lanka",
-  " Sudan",
-  " Sweden",
-  " Switzerland",
-  " Syria",
-  " Taiwan",
-  " Tajikistan",
-  " Tanzania",
-  " Thailand",
-  " Tunisia",
-  " Turkey",
-  " Turkmenistan",
+  "Somalia",
+  "South Africa",
+  "Spain",
+  "Sri Lanka",
+  "Sudan",
+  "Sweden",
+  "Switzerland",
+  "Syria",
+  "Taiwan",
+  "Tajikistan",
+  "Tanzania",
+  "Thailand",
+  "Tunisia",
+  "Turkey",
+  "Turkmenistan",
 
-  " United Arab Emirates",
-  " United Kingdom",
-  " United States",
-  " Uzbekistan",
-  "  Yemen",
-  " Zimbabwe",
+  "United Arab Emirates",
+  "United Kingdom",
+  "United States",
+  "Uzbekistan",
+  "Yemen",
+  "Zimbabwe",
 ]
 
-let selectedWord = words[Math.floor(Math.random() * words.length)]
+let selectedWord = words[Math.floor(Math.random() * words.length)].trim()
 
 let playable = true
 
@@ -121,7 +122,7 @@ function displayWord() {
       .map(
         (letter) => `
           <span class="letter">
-            ${correctLetters.includes(letter) ? letter : ""}
+            ${checkIfItHasLetter(correctLetters, letter) ? letter : ""}
           </span>
         `
       )
@@ -177,14 +178,22 @@ function showNotification() {
   }, 2000)
 }
 
+// Makes it easier to read the if statements
+function checkIfItHasLetter(origin, letter) {
+  const letterLowerCase = letter.toLowerCase()
+  const letterUpperCase = letter.toUpperCase()
+
+  return origin.includes(letterLowerCase) || origin.includes(letterUpperCase)
+}
+
 // Keydown letter press
 window.addEventListener("keydown", (e) => {
   if (playable) {
     if (e.keyCode >= 65 && e.keyCode <= 90) {
-      const letter = e.key.toLowerCase()
+      const letter = e.key
 
-      if (selectedWord.includes(letter)) {
-        if (!correctLetters.includes(letter)) {
+      if (checkIfItHasLetter(selectedWord, letter)) {
+        if (!checkIfItHasLetter(correctLetters, letter)) {
           correctLetters.push(letter)
 
           displayWord()
@@ -192,7 +201,7 @@ window.addEventListener("keydown", (e) => {
           showNotification()
         }
       } else {
-        if (!wrongLetters.includes(letter)) {
+        if (!checkIfItHasLetter(wrongLetters, letter)) {
           wrongLetters.push(letter)
 
           updateWrongLettersEl()
